@@ -1,1 +1,8 @@
+.cache/
 .idea/
+bin/
+obj/
+
+*.db
+
+compile_commands.json
