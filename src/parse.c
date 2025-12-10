@@ -10,13 +10,20 @@
 #include "common.h"
 #include "parse.h"
 
-void list_employees(struct dbheader_t *header, struct employee_t *employees) {
+int list_employees(struct dbheader_t *header, struct employee_t *employees) {
+    if (header == NULL) {
+        printf("Invalid header.\n");
+        return STATUS_ERROR;
+    }
+
     for (int i = 0; i < header->count; i++) {
         printf("Employee %d\n", i);
         printf("\tName: %s\n", employees[i].name);
         printf("\tAddress: %s\n", employees[i].address);
         printf("\tHours: %d\n", employees[i].hours);
     }
+
+    return STATUS_SUCCESS;
 }
 
 int create_db_header(struct dbheader_t **headerOut) {
